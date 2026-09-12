@@ -105,6 +105,8 @@ buildFHSEnv rec {
     # ncurses5 is needed by hfs ocl backend
     # workaround for this issue: https://github.com/NixOS/nixpkgs/issues/89769
     export LD_LIBRARY_PATH=${lib.makeLibraryPath [ncurses5]}:$LD_LIBRARY_PATH
+    echo ${lib.makeLibraryPath [ncurses5]}
+    echo $LD_LIBRARY_PATH
     exec "$arg1" "$@"
   '';
 

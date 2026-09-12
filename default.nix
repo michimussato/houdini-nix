@@ -10,6 +10,8 @@ buildFHSEnv rec {
   unsharePid = false;
 
   targetPkgs = pkgs: (with pkgs; [
+  	xmessage
+
     libGLU
     libGL
     alsa-lib
@@ -31,31 +33,28 @@ buildFHSEnv rec {
     ocl-icd  # needed for opencl
     numactl  # needed by hfs ocl backend
     zstd  # needed from 20.0
-  ]) ++ (with pkgs.xorg; [
-    libICE
-    libSM
-    libXmu
-    libXi
-    libXt
-    libXext
-    libX11
-    libXrender
-    libXcursor
-    libXfixes
-    libXrender
-    libXcomposite
-    libXdamage
-    libXtst
+
+    libice
+    libsm
+    libxmu
+    libxi
+    libxext
+    libx11
+    libxrender
+    libxcursor
+    libxfixes
+    libxcomposite
+    libxdamage
+    libxtst
     libxcb
-    libXScrnSaver
-    libXrandr
-    libxcb
-    xcbutil
-    xcbutilimage
-    xcbutilrenderutil
-    xcbutilcursor
-    xcbutilkeysyms
-    xcbutilwm
+    libxscrnsaver
+    libxrandr
+    libxcb-util
+    libxcb-image
+    libxcb-render-util
+    libxcb-cursor
+    libxcb-keysyms
+    libxcb-wm
   ]) ++ (extraFhsPkgs pkgs);
 
   passthru = {
